@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
@@ -40,6 +41,7 @@ class CrimeListFragment : Fragment() {
 
         private val mTitleTextView: TextView = itemView.findViewById(R.id.crime_title)
         private val mDateTextView: TextView = itemView.findViewById(R.id.crime_date)
+        private val mSolvedImageView: ImageView = itemView.findViewById(R.id.crime_solved)
 
         private lateinit var mCrime: Crime
 
@@ -47,6 +49,7 @@ class CrimeListFragment : Fragment() {
             mCrime = crime
             mTitleTextView.text = mCrime.getTitle()
             mDateTextView.text = mCrime.getDate().toString()
+            mSolvedImageView.setVisibility(if (crime.isSolved()) View.VISIBLE else View.GONE)
 
             itemView.setOnClickListener(this)
         }
