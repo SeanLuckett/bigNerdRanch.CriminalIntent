@@ -1,7 +1,9 @@
 package com.sluckett.criminalintent
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -59,7 +61,8 @@ class CrimeListFragment : Fragment() {
         }
 
         override fun onClick(view: View) {
-            Toast.makeText(view.context, "${mCrime.getTitle()} clicked!", Toast.LENGTH_SHORT).show()
+            val intent: Intent = Intent(view.context, CrimeActivity::class.java)
+            startActivity(intent)
         }
     }
 
