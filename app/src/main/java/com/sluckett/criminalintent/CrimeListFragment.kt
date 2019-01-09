@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import java.text.DateFormat
 
 class CrimeListFragment : Fragment() {
     private lateinit var mCrimeRecyclerView: RecyclerView
@@ -48,7 +49,10 @@ class CrimeListFragment : Fragment() {
         fun bind(crime: Crime) {
             mCrime = crime
             mTitleTextView.text = mCrime.getTitle()
-            mDateTextView.text = mCrime.getDate().toString()
+
+            val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
+            mDateTextView.text = dateFormatter.format(mCrime.getDate())
+
             mSolvedImageView.setVisibility(if (crime.isSolved()) View.VISIBLE else View.GONE)
 
             itemView.setOnClickListener(this)
